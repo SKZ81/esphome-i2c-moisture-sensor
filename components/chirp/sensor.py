@@ -17,7 +17,7 @@ from esphome.const import (
     UNIT_PERCENT,
 )
 
-CODEOWNERS = ["@dyptan-io"]
+CODEOWNERS = ["@dyptan-io", "@SKZ81"]
 DEPENDENCIES = ["i2c"]
 
 CONF_MIN_CAPACITY = "min_capacity"

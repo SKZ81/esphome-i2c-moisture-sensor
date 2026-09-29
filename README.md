@@ -8,16 +8,16 @@ This is the [ESPHome](https://github.com/esphome/esphome) external component for
 external_components:
   - source:
       type: git
-      url: https://github.com/dyptan-io/esphome-i2c-sensor
+      url: https://github.com/SKZ81/esphome-i2c-moisture-sensor
       ref: main
-    components: [ chirp ]
+    components: [ i2c-moisture-sensor ]
 
 i2c:
   sda: D1
   scl: D2
 
 sensor:
-  - platform: chirp
+  - platform: i2c-moisture-sensor
     moisture:
       name: "Soil Moisture"
       calibration:
@@ -26,11 +26,16 @@ sensor:
         raw: false         # Use inbuilt conversion.
       filters:
         - skip_initial: 1  # First read is zero, skip it.
-    temperature:
-      name: "Soil Temperature"
-      filters:
-        - skip_initial: 1  # First read is zero, skip it.
-        - offset: -0.1     # Calibrate readings.
+
+
+    # NOTE: SKZ81's version of the sensor does not measure temperature
+    # temperature:
+    #   name: "Soil Temperature"
+    #   filters:
+    #     - skip_initial: 1  # First read is zero, skip it.
+    #     - offset: -0.1     # Calibrate readings.
+
+
     illuminance:
       name: "Ambient Light"
       calibration:
@@ -41,7 +46,7 @@ sensor:
         - skip_initial: 1  # First read is zero, skip it.
     update_interval: 5s
     address: 0x20
-    new_address: 0x21      # Change the address upon startup, requires a restart.
+    # new_address: 0x21      # Change the address upon startup, requires a restart.
 ```
 
 ## Configuration Options
@@ -73,6 +78,9 @@ sensor:
     ```
 
 - **Temperature**:
+
+  **NOTE** : This should not be used with SKZ81's version of the sensor because it does not measure temperature.
+
   - `filters`:
     - `offset`: Temperature correction in Celsius if the sensor reads too high or low.
 
@@ -131,6 +139,8 @@ Learn more about the sensor hardware at [I2C Moisture Sensor GitHub Repository](
 Thanks to Miceuz for the Chirp sensor and to ESPHome for the integration platform.
 
 ## Print Model
+
+**NOTE:** This model won't fit the PCB version by SKZ81
 
 Additionally, there are [models](assets/) for 3D printing the casing for the sensor, which consists of two parts: top and bottom.
 Note that the light reading will not be possible if you print it using non-translucent material.
