@@ -113,7 +113,7 @@ void I2CSoilMoistureComponent::dump_config() {
       ESP_LOGE(TAG, "  Communication with sensor failed.");
       break;
     case ErrorCode::UPDATE_INTERVAL_TOO_SHORT:
-      ESP_LOGE(TAG, "  update_interval must be at least %ums when illuminance is configured.",
+      ESP_LOGE(TAG, "  update_interval must be at least %lums when illuminance is configured.",
                LIGHT_INTEGRATION_MS);
       break;
     case ErrorCode::NONE:
