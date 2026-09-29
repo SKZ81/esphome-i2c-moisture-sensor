@@ -26,8 +26,8 @@ CONF_COEFFICIENT = "coefficient"
 CONF_CONSTANT = "constant"
 CONF_NEW_ADDRESS = "new_address"
 
-chirp_ns = cg.esphome_ns.namespace("chirp")
-ChirpComponent = chirp_ns.class_(
+i2c_moisture_sensor_ns = cg.esphome_ns.namespace("i2c_moisture_sensor")
+ChirpComponent = i2c_moisture_sensor_ns.class_(
     "I2CSoilMoistureComponent", cg.PollingComponent, i2c.I2CDevice
 )
 

@@ -5,7 +5,7 @@
 #include "esphome/core/component.h"
 
 namespace esphome {
-namespace chirp {
+namespace i2c_moisture_sensor {
 
 class I2CSoilMoistureComponent : public PollingComponent, public i2c::I2CDevice {
  public:

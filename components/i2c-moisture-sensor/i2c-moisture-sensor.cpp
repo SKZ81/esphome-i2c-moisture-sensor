@@ -1,12 +1,12 @@
-#include "chirp.h"
+#include "i2c-moisture-sensor.h"
 
 #include "esphome/core/helpers.h"
 #include "esphome/core/log.h"
 
 namespace esphome {
-namespace chirp {
+namespace i2c_moisture_sensor {
 
-static const char *const TAG = "chirp";
+static const char *const TAG = "i2c-moisture-sensor";
 
 // Register and command opcodes — see https://github.com/Miceuz/i2c-moisture-sensor#protocol
 static const uint8_t REG_GET_CAPACITANCE = 0x00;   // r, 2 bytes
